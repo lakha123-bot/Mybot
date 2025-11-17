@@ -2,13 +2,17 @@ name: Telegram Bot 24x7
 
 on:
   schedule:
-    - cron: "*/10 * * * *"     # हर 10 मिनट में ऑटो स्टार्ट
+    - cron: "*/10 * * * *"   # Har 10 minutes me auto start
   workflow_dispatch:
+
+concurrency:
+  group: bot-runner
+  cancel-in-progress: false   # Ye sabse important hai
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 355        # 5 घंटे 55 मिनट
+    timeout-minutes: 350      # 6h se pehle stop
 
     steps:
       - name: Checkout Repository

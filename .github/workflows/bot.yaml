@@ -2,8 +2,8 @@ name: Telegram Bot 24x7
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # Every 5 minutes auto-start
-  workflow_dispatch:
+    - cron: "*/5 * * * *"   # Her 5 minute me auto-start
+  workflow_dispatch:        # Manual start option
 
 jobs:
   run-bot:

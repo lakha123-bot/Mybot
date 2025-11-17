@@ -2,12 +2,13 @@ name: Telegram Bot 24x7
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # Her 5 minute me auto-start
-  workflow_dispatch:        # Manual start option
+    - cron: "*/10 * * * *"     # हर 10 मिनट में ऑटो स्टार्ट
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    timeout-minutes: 355        # 5 घंटे 55 मिनट
 
     steps:
       - name: Checkout Repository
@@ -16,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install Dependencies
         run: |
@@ -28,4 +29,4 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
-          timeout 350m python bot.py
+          python bot.py
